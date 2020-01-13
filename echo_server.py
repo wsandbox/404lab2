@@ -15,3 +15,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
             if not data:
                 break
             connection.sendall(data)
+            print(sock)
