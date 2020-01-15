@@ -6,19 +6,21 @@ PORT = 8001
 
 def echo():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        sock.bind((HOST, PORT))
+        sock.bind(('localhost', PORT))
         sock.listen()
         connection, address = sock.accept()
-        print("Local socket info:", sock)
+# print local socket info         
+#        print("Local socket info:", sock)
         with connection:
             while True:
                 data = connection.recv(4096)
                 if not data:
                     break
-                print("Received", data)
                 connection.sendall(data)
-                print('Connection:', connection, "type:", type(connection))
-                print('Address:', address, "type:", type(address))
+# print statements to view data received as well as information about the connected client                
+#                print("Received", data)
+#                print('Connection:', connection, "type:", type(connection))
+#                print('Address:', address, "type:", type(address))
 
 if __name__ == '__main__':
     m.set_start_method('spawn')
